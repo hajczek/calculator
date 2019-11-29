@@ -4,7 +4,7 @@
 
 This will be a calculator app.
 
-### WHAT WILL USED FOR THIS APPLICATION
+### WHAT WILL USE FOR THIS APPLICATION
 
 - HTML<br/>
 - CSS<br/>
