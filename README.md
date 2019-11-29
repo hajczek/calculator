@@ -8,6 +8,6 @@ This will be a calculator app.
 
 - HTML<br>
 - CSS<br>
-- SCSS<br>
+- SASS<br>
 - JavaScript<br>
 - React
