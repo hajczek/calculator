@@ -6,7 +6,8 @@ This will be a calculator app.
 
 ### WHAT WILL USE FOR THIS APPLICATION
 
-- HTML<br/>
-- CSS<br/>
-- JavaScript<br/>
+- HTML<br>
+- CSS<br>
+- SCSS<br>
+- JavaScript<br>
 - React
