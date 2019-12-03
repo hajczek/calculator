@@ -5,24 +5,24 @@ function App() {
     <div className="App">
 
       <div class="container">
-        <div id="display">Result: 0</div>
-        <div id="clear">AC</div>
-        <div id="add">+</div>
-        <div id="subtract">-</div>
-        <div id="multiply">*</div>
-        <div id="divide">/</div>
-        <div id="decimal">.</div>
-        <div id="zero">0</div>
-        <div id="one">1</div>
-        <div id="two">2</div>
-        <div id="three">3</div>
-        <div id="four">4</div>
-        <div id="five">5</div>
-        <div id="six">6</div>
-        <div id="seven">7</div>
-        <div id="eight">8</div>
-        <div id="nine">9</div>
-        <div id='equals'>=</div>
+        <div id="display" class="result">0</div>
+        <div id="clear" class="ac">AC</div>
+        <div id="add" class="small">+</div>
+        <div id="subtract" class="small">-</div>
+        <div id="multiply" class="small">*</div>
+        <div id="divide" class="small">/</div>
+        <div id="decimal" class="small">.</div>
+        <div id="zero" class="small">0</div>
+        <div id="one" class="small">1</div>
+        <div id="two" class="small">2</div>
+        <div id="three" class="small">3</div>
+        <div id="four" class="small">4</div>
+        <div id="five" class="small">5</div>
+        <div id="six" class="small">6</div>
+        <div id="seven" class="small">7</div>
+        <div id="eight" class="small">8</div>
+        <div id="nine" class="small">9</div>
+        <div id='equals' class="small">=</div>
       </div>
 
     </div>

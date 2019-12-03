@@ -1,3 +1,47 @@
+$font-family: Verdana, Arial, sans-serif;
+$font-size: 16px;
+$bg-color: #fff;
+$font-color: #222;
+$result-color: #ccc;
+$border: 1px solid #ddd;
+
 body {
-  background-color: #eee;
+  background-color: $bg-color;
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $font-color;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 120px;
+    height: 196px;
+    padding: 2px;
+    border: $border;
+    margin: 0 auto;
+    justify-content:  space-between;
+
+    div {
+      border: $border;
+      height: 25px;
+    }
+
+    .result {
+      width: 100%;
+      color: $result-color;
+      text-align: right;
+    }
+
+    .ac {
+      width: 66%;
+      text-align: center;
+    }
+
+    .small {
+      width: 30%;
+      text-align: center;
+    }
+  }
 }
+
