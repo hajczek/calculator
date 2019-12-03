@@ -16,25 +16,27 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     width: 120px;
-    height: 196px;
-    padding: 2px;
+    height: 206px;
+    padding: 2px 2px 0 2px;
     border: $border;
     margin: 0 auto;
     justify-content:  space-between;
 
     div {
       border: $border;
-      height: 25px;
+      padding: 2px 0;
+      height: 21px;
     }
 
     .result {
       width: 100%;
       color: $result-color;
       text-align: right;
+      padding: 2px;
     }
 
     .ac {
-      width: 66%;
+      width: 64%;
       text-align: center;
     }
 
