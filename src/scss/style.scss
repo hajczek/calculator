@@ -20,7 +20,7 @@ body {
     padding: 2px 2px 0 2px;
     border: $border;
     margin: 0 auto;
-    justify-content:  space-between;
+    justify-content: space-around;
 
     button,
     div {
@@ -30,14 +30,14 @@ body {
     }
 
     .result {
-      width: 100%;
+      width: 92%;
       color: $result-color;
       text-align: right;
       padding: 2px;
     }
 
     .ac {
-      width: 65%;
+      width: 64%;
       text-align: center;
     }
 
