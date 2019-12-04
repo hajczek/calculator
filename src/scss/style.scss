@@ -15,17 +15,18 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 120px;
-    height: 206px;
+    width: 110px;
+    height: 160px;
     padding: 2px 2px 0 2px;
     border: $border;
     margin: 0 auto;
     justify-content:  space-between;
 
+    button,
     div {
       border: $border;
       padding: 2px 0;
-      height: 21px;
+      height:20px;
     }
 
     .result {
@@ -36,7 +37,7 @@ body {
     }
 
     .ac {
-      width: 64%;
+      width: 65%;
       text-align: center;
     }
 
