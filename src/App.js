@@ -4,25 +4,25 @@ function App() {
   return (
     <div className="App">
 
-      <div class="container">
-        <div id="display" class="result">0</div>
-        <div id="clear" class="ac">AC</div>
-        <div id="add" class="small">+</div>
-        <div id="subtract" class="small">-</div>
-        <div id="multiply" class="small">*</div>
-        <div id="divide" class="small">/</div>
-        <div id="seven" class="small">7</div>
-        <div id="eight" class="small">8</div>
-        <div id="nine" class="small">9</div>
-        <div id="four" class="small">4</div>
-        <div id="five" class="small">5</div>
-        <div id="six" class="small">6</div>
-        <div id="one" class="small">1</div>
-        <div id="two" class="small">2</div>
-        <div id="three" class="small">3</div>
-        <div id="zero" class="small">0</div>
-        <div id="decimal" class="small">.</div>
-        <div id='equals' class="small">=</div>
+      <div className="container">
+        <div id="display" className="result">0</div>
+        <button id="clear" className="ac">AC</button>
+        <button id="add" className="small">+</button>
+        <button id="subtract" className="small">-</button>
+        <button id="multiply" className="small">*</button>
+        <button id="divide" className="small">/</button>
+        <button id="seven" className="small">7</button>
+        <button id="eight" className="small">8</button>
+        <button id="nine" className="small">9</button>
+        <button id="four" className="small">4</button>
+        <button id="five" className="small">5</button>
+        <button id="six" className="small">6</button>
+        <button id="one" className="small">1</button>
+        <button id="two" className="small">2</button>
+        <button id="three" className="small">3</button>
+        <button id="zero" className="small">0</button>
+        <button id="decimal" className="small">.</button>
+        <button id='equals' className="small">=</button>
       </div>
 
     </div>
