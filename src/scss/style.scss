@@ -5,6 +5,8 @@ $bg-color: #fff;
 $font-color: #222;
 $result-color: #666;
 $ac-color: #ddd;
+$btn-hover-color: #ddd;
+$btn-hover-bg-color: #888;
 $border: 1px solid #ddd;
 
 
@@ -63,6 +65,12 @@ body {
       .small {
         width: 30%;
         text-align: center;
+      }
+
+      .small:hover {
+        background-color: $btn-hover-bg-color;
+        border-color: $btn-hover-bg-color;
+        color: $btn-hover-color;
       }
     }   
   }
