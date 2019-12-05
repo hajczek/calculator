@@ -3,7 +3,8 @@ $font-size: 16px;
 $reset-color: rgb(177, 6, 6);
 $bg-color: #fff;
 $font-color: #222;
-$result-color: #ccc;
+$result-color: #666;
+$ac-color: #ddd;
 $border: 1px solid #ddd;
 
 
@@ -36,7 +37,8 @@ body {
       width: 96%;
       color: $result-color;
       text-align: right;
-      padding: 0 2px;
+      padding: 5px 2px 0;
+      font-size: 0.65rem;
     }
 
     form {
@@ -49,7 +51,7 @@ body {
         width: 64%;
         text-align: center;
         background-color: $reset-color;
-        color: $result-color;
+        color: $ac-color;
         border-color: $reset-color;
       }
 
