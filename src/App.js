@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 
 class App extends Component {
   state = {
-    result: 0
+    result: ''
   }
 
   displayVal = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    let value = e.target.firstChild.nodeValue;
+    let display = document.getElementById('display');
+    display.innerHTML += value;
+    let result = display.firstChild.nodeValue;
     this.setState({
-      result: e.target.firstChild.nodeValue
+      result: result
     })
   }
 
