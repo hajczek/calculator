@@ -20,26 +20,28 @@ body {
     flex-wrap: wrap; 
     border: $border;
     margin: 0 auto;
+    align-content: flex-start;  
 
     button,
     div {
       border: $border;
       padding: 2px 0;
       height:20px;
+      margin: 1px;
     }
 
     .result {
-      width: 92%;
+      width: 96%;
       color: $result-color;
       text-align: right;
-      padding: 2px;
+      padding: 0 2px;
     }
 
     form {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap; 
-      justify-content: space-around;     
+      justify-content: space-around;   
   
       .ac {
         width: 64%;
