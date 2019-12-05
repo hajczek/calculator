@@ -7,16 +7,21 @@ class App extends Component {
 
   displayVal = (e) => {
     e.preventDefault();
-    let value = e.target.firstChild.nodeValue;
-    let display = document.getElementById('display');
-    display.innerHTML += value;
-    let result = display.firstChild.nodeValue;
-    this.setState({
-      result: result
-    })
+    console.log(e.target.nodeName);
+    if (e.target.nodeName !== 'FORM') {
+      let value = e.target.firstChild.nodeValue;
+      let display = document.getElementById('display');
+      display.innerHTML += value;
+      let result = display.firstChild.nodeValue;
+      this.setState({
+        result: result
+      });
+    }
+    e.stopPropagation();
   }
 
   render() {
+
     return (
       <div className="App">
         <div className="container">
