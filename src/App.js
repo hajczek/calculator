@@ -19,6 +19,7 @@ class App extends Component {
       });
     }
 
+    // Functionality for AC button - reset value of result
     if (e.target.firstChild.nodeValue === 'AC') {
       let display = document.getElementById('display');
       display.classList.add('result');
