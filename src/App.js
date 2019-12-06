@@ -11,11 +11,15 @@ class App extends Component {
     if (e.target.nodeName !== 'FORM') {
       let value = e.target.firstChild.nodeValue;
       let display = document.getElementById('display');
+      display.classList.remove('result');
+      display.classList.add('resultNew');
       display.innerHTML += value;
       let result = display.firstChild.nodeValue;
       this.setState({
         result: result
       });
+
+      // document.querySelector('.result:before').style.content = '';
     }
     e.stopPropagation();
   }
@@ -25,7 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <div id="display" className="result display">{this.state.result}</div>
+          <div id="display" className="result display" value="0">{this.state.result}</div>
           <form onClick={this.displayVal}>
             <button id="clear" className="ac">AC</button>
             <button id="add" className="small display">+</button>

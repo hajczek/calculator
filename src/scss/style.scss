@@ -43,6 +43,18 @@ body {
       font-size: 0.65rem;
     }
 
+    .result:before {
+      content: "0";
+    }
+
+    .resultNew {
+      width: 96%;
+      color: $result-color;
+      text-align: right;
+      padding: 5px 2px 0;
+      font-size: 0.65rem;
+    }
+
     form {
       display: flex;
       flex-direction: row;
