@@ -7,7 +7,6 @@ class App extends Component {
 
   displayVal = (e) => {
     e.preventDefault();
-    console.log(e.target.nodeName);
     if (e.target.nodeName !== 'FORM') {
       let value = e.target.firstChild.nodeValue;
       let display = document.getElementById('display');
@@ -18,8 +17,14 @@ class App extends Component {
       this.setState({
         result: result
       });
+    }
 
-      // document.querySelector('.result:before').style.content = '';
+    if (e.target.firstChild.nodeValue === 'AC') {
+      let display = document.getElementById('display');
+      display.classList.add('result');
+      this.setState({
+        result: ''
+      });
     }
     e.stopPropagation();
   }
