@@ -27,6 +27,16 @@ class App extends Component {
         result: ''
       });
     }
+
+    // Functionality for = button - reset value of result
+    if (e.target.firstChild.nodeValue === '=') {
+      var Parser = require('expr-eval').Parser;
+      let score = Parser.evaluate(this.state.result);
+      console.log(score);
+      this.setState({
+        result: score
+      });
+    }
     e.stopPropagation();
   }
 
