@@ -46,8 +46,8 @@ class App extends Component {
       <div className="App">
         <div className="container">
           <div id="display" className="result display" value="0">
-            <p className="allAction">{this.state.result}</p>
-            <p className="finishResult">{this.state.result}</p>
+            <p id="allAction">{this.state.result}</p>
+            <p id="finishResult">{this.state.result}</p>
           </div>
           <form onClick={this.displayVal}>
             <button id="clear" className="ac">AC</button>
