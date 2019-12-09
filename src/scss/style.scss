@@ -6,8 +6,10 @@ $font-color: #222;
 $result-color: #666;
 $ac-color: #ddd;
 $all-action-color: #aaa;
+$btn-action-bg-color: #bbb;
 $btn-hover-color: #ddd;
 $btn-hover-bg-color: #888;
+$btn-equal-bg-color: #63a0d8;
 $border: 1px solid #ddd;
 
 
@@ -97,6 +99,14 @@ body {
         background-color: $btn-hover-bg-color;
         border-color: $btn-hover-bg-color;
         color: $btn-hover-color;
+      }
+
+      .act {
+        background-color: $btn-action-bg-color;
+      }
+
+      .equal {
+        background-color: $btn-equal-bg-color;
       }
     }   
   }

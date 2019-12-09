@@ -51,10 +51,10 @@ class App extends Component {
           </div>
           <form onClick={this.displayVal}>
             <button id="clear" className="ac">AC</button>
-            <button id="add" className="small display">+</button>
-            <button id="subtract" className="small display">-</button>
-            <button id="multiply" className="small display">*</button>
-            <button id="divide" className="small display">/</button>
+            <button id="add" className="small display act">+</button>
+            <button id="subtract" className="small display act">-</button>
+            <button id="multiply" className="small display act">*</button>
+            <button id="divide" className="small display act">/</button>
             <button id="seven" className="small display">7</button>
             <button id="eight" className="small display">8</button>
             <button id="nine" className="small display">9</button>
@@ -65,8 +65,8 @@ class App extends Component {
             <button id="two" className="small display">2</button>
             <button id="three" className="small display">3</button>
             <button id="zero" className="small display">0</button>
-            <button id="decimal" className="small display">.</button>
-            <button id='equals' className="small display">=</button>
+            <button id="decimal" className="small display act">.</button>
+            <button id='equals' className="small display equal">=</button>
           </form>
         </div>
       </div>
