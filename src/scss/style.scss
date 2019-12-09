@@ -50,25 +50,25 @@ body {
         padding: 0;
       }
 
-      p:before {
+      .before:before {
         content: "0";
+      }
+
+      .clearBefore:before {
+        content: "";
       }
 
       #allAction {
         color: $all-action-color;
+        padding: 0;
+        margin: 0;
       }
 
       #finishResult {
         font-size: 1.3em;
+        padding: 0;
+        margin: 0;
       }
-    }
-
-    .resultNew {
-      width: 96%;
-      color: $result-color;
-      text-align: right;
-      padding: 5px 2px 0;
-      font-size: 0.65rem;
     }
 
     form {

@@ -9,11 +9,21 @@ class App extends Component {
     e.preventDefault();
     if (e.target.nodeName !== 'FORM') {
       let value = e.target.firstChild.nodeValue;
-      let display = document.getElementById('display');
-      display.classList.remove('result');
-      display.classList.add('resultNew');
-      display.innerHTML += value;
-      let result = display.firstChild.nodeValue;
+
+      let allAction = document.getElementById('allAction');
+      let finishResult = document.getElementById('finishResult');
+      // let display = document.getElementById('display');
+
+      allAction.classList.remove('before');
+      allAction.classList.add('clearBefore');
+
+      finishResult.classList.remove('before');
+      finishResult.classList.add('clearBefore');
+
+      allAction.innerHTML += value;
+      finishResult.innerHTML = value;
+
+      let result = allAction.firstChild.nodeValue;
       this.setState({
         result: result
       });
@@ -46,8 +56,8 @@ class App extends Component {
       <div className="App">
         <div className="container">
           <div id="display" className="result display" value="0">
-            <p id="allAction">{this.state.result}</p>
-            <p id="finishResult">{this.state.result}</p>
+            <p id="allAction" className="before">{this.state.result}</p>
+            <p id="finishResult" className="before">{this.state.result}</p>
           </div>
           <form onClick={this.displayVal}>
             <button id="clear" className="ac">AC</button>
