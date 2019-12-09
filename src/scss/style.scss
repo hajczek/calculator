@@ -39,12 +39,17 @@ body {
       width: 96%;
       color: $result-color;
       text-align: right;
-      padding: 5px 2px 0;
+      padding: 3px 2px 5px;
       font-size: 0.65rem;
-    }
 
-    .result:before {
-      content: "0";
+      p {
+        margin: 0; 
+        padding: 0;
+      }
+      
+      p:before {
+        content: "0";
+      }
     }
 
     .resultNew {
