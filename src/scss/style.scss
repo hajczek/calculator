@@ -5,6 +5,7 @@ $bg-color: #fff;
 $font-color: #222;
 $result-color: #666;
 $ac-color: #ddd;
+$all-action-color: #aaa;
 $btn-hover-color: #ddd;
 $btn-hover-bg-color: #888;
 $border: 1px solid #ddd;
@@ -46,9 +47,17 @@ body {
         margin: 0; 
         padding: 0;
       }
-      
+
       p:before {
         content: "0";
+      }
+
+      .allAction {
+        color: $all-action-color;
+      }
+
+      .finishResult {
+        font-size: 1.3em;
       }
     }
 
