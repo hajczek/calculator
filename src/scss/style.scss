@@ -103,10 +103,12 @@ body {
 
       .act {
         background-color: $btn-action-bg-color;
+        border-color: $btn-action-bg-color;
       }
 
       .equal {
         background-color: $btn-equal-bg-color;
+        border-color: $btn-equal-bg-color;
       }
     }   
   }
