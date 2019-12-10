@@ -8,11 +8,13 @@ class App extends Component {
 
   displayVal = (e) => {
     e.preventDefault();
-    if (e.target.nodeName !== 'FORM') {
-      let value = e.target.firstChild.nodeValue;
 
-      let allAction = document.getElementById('allAction');
-      let finishResult = document.getElementById('finishResult');
+    let value = e.target.firstChild.nodeValue;
+
+    let allAction = document.getElementById('allAction');
+    let finishResult = document.getElementById('finishResult');
+
+    if (e.target.nodeName !== 'FORM') {
       // let display = document.getElementById('display');
 
       allAction.classList.remove('before');
@@ -35,8 +37,6 @@ class App extends Component {
 
     // Functionality for AC button - reset value of result
     if (e.target.firstChild.nodeValue === 'AC') {
-      let allAction = document.getElementById('allAction');
-      let finishResult = document.getElementById('finishResult');
       allAction.classList.add('before');
       finishResult.classList.add('before');
       allAction.classList.remove('clearBefore');
@@ -57,6 +57,9 @@ class App extends Component {
         actual: score
       });
     }
+
+
+
     e.stopPropagation();
   }
 
