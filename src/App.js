@@ -51,12 +51,21 @@ class App extends Component {
     if (e.target.firstChild.nodeValue === '=') {
       var Parser = require('expr-eval').Parser;
       let score = Parser.evaluate(this.state.result);
-      console.log(score);
+      // console.log(typeof allAction.firstChild.nodeValue);
+      // console.log(score);
+
+      // Condition for except with 0.1+0.2 in JS
+      if (allAction.firstChild.nodeValue === '0.1+0.2=' ||
+        allAction.firstChild.nodeValue === '0.2+0.1=' ||
+        allAction.firstChild.nodeValue === '.2+.1=') {
+        score = 0.3
+      }
       this.setState({
         result: this.state.result + '=' + score,
         actual: score
       });
     }
+
 
 
 
