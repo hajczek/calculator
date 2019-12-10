@@ -35,10 +35,15 @@ class App extends Component {
 
     // Functionality for AC button - reset value of result
     if (e.target.firstChild.nodeValue === 'AC') {
-      let display = document.getElementById('display');
-      display.classList.add('result');
+      let allAction = document.getElementById('allAction');
+      let finishResult = document.getElementById('finishResult');
+      allAction.classList.add('before');
+      finishResult.classList.add('before');
+      allAction.classList.remove('clearBefore');
+      finishResult.classList.remove('clearBefore');
       this.setState({
-        result: ''
+        result: '',
+        actual: ''
       });
     }
 
