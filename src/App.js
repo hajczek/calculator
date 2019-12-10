@@ -53,7 +53,8 @@ class App extends Component {
       let score = Parser.evaluate(this.state.result);
       console.log(score);
       this.setState({
-        result: this.state.result + '=' + score
+        result: this.state.result + '=' + score,
+        actual: score
       });
     }
     e.stopPropagation();
