@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class App extends Component {
   state = {
-    result: ''
+    result: '',
+    actual: ''
   }
 
   displayVal = (e) => {
@@ -24,8 +25,11 @@ class App extends Component {
       finishResult.innerHTML = value;
 
       let result = allAction.firstChild.nodeValue;
+      let actual = finishResult.firstChild.nodeValue;
+
       this.setState({
-        result: result
+        result: result,
+        actual: actual
       });
     }
 
@@ -57,7 +61,7 @@ class App extends Component {
         <div className="container">
           <div id="display" className="result display" value="0">
             <p id="allAction" className="before">{this.state.result}</p>
-            <p id="finishResult" className="before">{this.state.result}</p>
+            <p id="finishResult" className="before">{this.state.actual}</p>
           </div>
           <form onClick={this.displayVal}>
             <button id="clear" className="ac">AC</button>
