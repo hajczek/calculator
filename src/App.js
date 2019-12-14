@@ -30,8 +30,15 @@ class App extends Component {
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
       } else {
-        finishResult.innerHTML = value;
+        finishResult.innerHTML += value;
       };
+
+      if (value === '0') {
+        if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
+          allAction.innerHTML = '0';
+          finishResult.innerHTML = '0';
+        }
+      }
 
       let result = allAction.firstChild.nodeValue;
       let actual = finishResult.firstChild.nodeValue;
@@ -56,7 +63,7 @@ class App extends Component {
 
     // Functionality for = button - reset value of result
     if (value === '=') {
-      var Parser = require('expr-eval').Parser;
+      let Parser = require('expr-eval').Parser;
       let score = Parser.evaluate(this.state.result);
 
       // Condition for except with 0.1+0.2 in JS
