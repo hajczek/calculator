@@ -25,8 +25,10 @@ class App extends Component {
       // finishResult.innerHTML = value;
 
       // If statement for buttons with numbers and decimal point - for displays these together as one element
-      if (e.target.className.includes('num') || e.target.firstChild.nodeValue === '.') {
+      if (typeof value === 'number' || value === '.') {
         finishResult.innerHTML += value;
+      } else if (value === '+' || value === '-' || value === '/' || value === '*') {
+        finishResult.innerHTML = value;
       } else {
         finishResult.innerHTML = value;
       };
@@ -41,7 +43,7 @@ class App extends Component {
     }
 
     // Functionality for AC button - reset value of result
-    if (e.target.firstChild.nodeValue === 'AC') {
+    if (value === 'AC') {
       allAction.classList.add('before');
       finishResult.classList.add('before');
       allAction.classList.remove('clearBefore');
@@ -53,7 +55,7 @@ class App extends Component {
     }
 
     // Functionality for = button - reset value of result
-    if (e.target.firstChild.nodeValue === '=') {
+    if (value === '=') {
       var Parser = require('expr-eval').Parser;
       let score = Parser.evaluate(this.state.result);
 
@@ -65,8 +67,8 @@ class App extends Component {
       }
 
       this.setState({
-        // result: this.state.result + '=' + score,
         result: score,
+        // result: this.state.result + '=' + score,
         actual: score
       });
     }
