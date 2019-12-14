@@ -27,12 +27,14 @@ class App extends Component {
       // If statement for buttons with numbers and decimal point - for displays these together as one element
       if (typeof value === 'number' || value === '.') {
         finishResult.innerHTML += value;
+        // TODO - clear result when click button with number fter click button with action (+, -, /, *, =)
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
       } else {
         finishResult.innerHTML += value;
       };
 
+      // If statement for button with value '0' - it can be display more than one time on the beginning of the number
       if (value === '0') {
         if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
           allAction.innerHTML = '0';
