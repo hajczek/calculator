@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-  state = {
-    result: '',
-    actual: ''
+  constructor() {
+    super();
+
+    this.state = {
+      result: '',
+      actual: ''
+    }
   }
 
   displayVal = (e) => {
@@ -26,10 +30,17 @@ class App extends Component {
 
       // If statement for buttons with numbers and decimal point - for displays these together as one element
       if (typeof value === 'number' || value === '.') {
-        finishResult.innerHTML += value;
-        // TODO - clear result when click button with number fter click button with action (+, -, /, *, =)
+        let actualValue;
+        actualValue += value;
+        finishResult.innerHTML = actualValue;
+
+        // TODO - clear result when click button with number after click button with action (+, -, /, *, =)
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
+        // Functionality for AC button
+      } else if (value === 'AC') {
+        finishResult.innerHTML = '0';
+        allAction.innerHTML = '0';
       } else {
         finishResult.innerHTML += value;
       };
@@ -51,24 +62,12 @@ class App extends Component {
       });
     }
 
-    // Functionality for AC button - reset value of result
-    if (value === 'AC') {
-      allAction.classList.add('before');
-      finishResult.classList.add('before');
-      allAction.classList.remove('clearBefore');
-      finishResult.classList.remove('clearBefore');
-      this.setState({
-        result: '',
-        actual: ''
-      });
-    }
-
     // Functionality for = button - reset value of result
     if (value === '=') {
       let Parser = require('expr-eval').Parser;
       let score = Parser.evaluate(this.state.result);
 
-      // Condition for except with 0.1+0.2 in JS
+      // Condition for result of except with 0.1+0.2 in JS
       if (allAction.firstChild.nodeValue === '0.1+0.2=' ||
         allAction.firstChild.nodeValue === '0.2+0.1=' ||
         allAction.firstChild.nodeValue === '.2+.1=') {
