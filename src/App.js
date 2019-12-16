@@ -19,6 +19,8 @@ class App extends Component {
 
     if (e.target.nodeName !== 'FORM') {
 
+      console.log(this.state.actual);
+
       allAction.classList.remove('before');
       allAction.classList.add('clearBefore');
 
@@ -26,15 +28,12 @@ class App extends Component {
       finishResult.classList.add('clearBefore');
 
       allAction.innerHTML += value;
-      // finishResult.innerHTML = value;
+      // finishResult.innerHTML += value;
 
-      // If statement for buttons with numbers and decimal point - for displays these together as one element
-      if (typeof value === 'number' || value === '.') {
-        let actualValue;
-        actualValue += value;
-        finishResult.innerHTML = actualValue;
-
-        // TODO - clear result when click button with number after click button with action (+, -, /, *, =)
+      // If statement for display only number, without action sign - in actual field
+      if (this.state.actual === '+' || this.state.actual === '-' || this.state.actual === '*' || this.state.actual === '/') {
+        finishResult.innerHTML = value;
+        // If else statement for display only action sign in actual field
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
         // Functionality for AC button
