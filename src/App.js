@@ -36,6 +36,8 @@ class App extends Component {
         // If else statement for display only action sign in actual field
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
+        // Remove disabled attribute from decimal button after click button with action
+        document.getElementById("decimal").removeAttribute('disabled');
         // Functionality for AC button
       } else if (value === 'AC') {
         finishResult.innerHTML = '0';
@@ -49,6 +51,14 @@ class App extends Component {
         if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
           allAction.innerHTML = '0';
           finishResult.innerHTML = '0';
+        }
+      }
+
+      // If statemen for decimal point which can be use only one time in number
+      if (value === '.') {
+        if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
+          // document.getElementById("decimal").textContent = '';
+          document.getElementById("decimal").setAttribute('disabled', 'true');
         }
       }
 
