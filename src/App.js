@@ -19,8 +19,6 @@ class App extends Component {
 
     if (e.target.nodeName !== 'FORM') {
 
-      console.log(this.state.actual);
-
       allAction.classList.remove('before');
       allAction.classList.add('clearBefore');
 
@@ -34,6 +32,9 @@ class App extends Component {
       if (this.state.actual === '+' || this.state.actual === '-' || this.state.actual === '*' || this.state.actual === '/') {
         finishResult.innerHTML = value;
         // If else statement for display only action sign in actual field
+      } else if (this.state.result === '0' && this.state.actual === '0' && value !== '.') {
+        allAction.innerHTML = value;
+        finishResult.innerHTML = value;
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
         // Remove disabled attribute from decimal button after click button with action
@@ -42,6 +43,14 @@ class App extends Component {
       } else if (value === 'AC') {
         finishResult.innerHTML = '0';
         allAction.innerHTML = '0';
+        /* allAction.classList.add('before');
+        finishResult.classList.add('before');
+        allAction.classList.remove('clearBefore');
+        finishResult.classList.remove('clearBefore');
+         this.setState({
+          result: '',
+          actual: ''
+        }); */
       } else {
         finishResult.innerHTML += value;
       };
@@ -69,26 +78,34 @@ class App extends Component {
         result: result,
         actual: actual
       });
-    }
 
-    // Functionality for = button - reset value of result
-    if (value === '=') {
-      let Parser = require('expr-eval').Parser;
-      let score = Parser.evaluate(this.state.result);
+      // Functionality for = button - reset value of result
+      if (value === '=') {
+        let Parser = require('expr-eval').Parser;
+        let score = Parser.evaluate(this.state.result);
 
-      // Condition for result of except with 0.1+0.2 in JS
-      if (allAction.firstChild.nodeValue === '0.1+0.2=' ||
-        allAction.firstChild.nodeValue === '0.2+0.1=' ||
-        allAction.firstChild.nodeValue === '.2+.1=') {
-        score = 0.3
+        let scoreStr = score.toString();
+        let strLength = scoreStr.length;
+        if (strLength > 14) {
+          score.toPrecision(13);
+        }
+
+        // Condition for result of except with 0.1+0.2 in JS
+        if (allAction.firstChild.nodeValue === '0.1+0.2=' ||
+          allAction.firstChild.nodeValue === '0.2+0.1=' ||
+          allAction.firstChild.nodeValue === '.2+.1=') {
+          score = 0.3
+        }
+
+        this.setState({
+          result: score,
+          // result: this.state.result + '=' + score,
+          actual: score
+        });
       }
-
-      this.setState({
-        result: score,
-        // result: this.state.result + '=' + score,
-        actual: score
-      });
     }
+
+
 
     e.stopPropagation();
   }
