@@ -31,10 +31,11 @@ class App extends Component {
       // If statement for display only number, without action sign - in actual field
       if (this.state.actual === '+' || this.state.actual === '-' || this.state.actual === '*' || this.state.actual === '/') {
         finishResult.innerHTML = value;
-        // If else statement for display only action sign in actual field
-      } else if (this.state.result === '0' && this.state.actual === '0' && value !== '.') {
+        // If else statement for clear 0 from fields actual and result after click button different than decimal
+      } else if (this.state.result === '0' && this.state.actual === '0' && value !== '.' && value !== 'AC' && value !== '=') {
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
+        // If else statement for display only action sign in actual field
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
         // Remove disabled attribute from decimal button after click button with action
