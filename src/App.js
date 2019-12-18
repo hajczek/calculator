@@ -77,10 +77,24 @@ class App extends Component {
         let Parser = require('expr-eval').Parser;
         let score = Parser.evaluate(this.state.result);
 
+        // Handle for length of result
         let scoreStr = score.toString();
         let strLength = scoreStr.length;
+
+        // Functionality for long numbers
         if (strLength > 14) {
-          score.toPrecision(13);
+          let shortScore = score.toPrecision(13);
+          this.setState({
+            result: shortScore,
+            // result: this.state.result + '=' + score,
+            actual: shortScore
+          });
+        } else {
+          this.setState({
+            result: score,
+            // result: this.state.result + '=' + score,
+            actual: score
+          });
         }
 
         // Condition for result of except with 0.1+0.2 in JS
@@ -89,12 +103,6 @@ class App extends Component {
           allAction.firstChild.nodeValue === '.2+.1=') {
           score = 0.3
         }
-
-        this.setState({
-          result: score,
-          // result: this.state.result + '=' + score,
-          actual: score
-        });
       }
     }
 
