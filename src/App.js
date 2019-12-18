@@ -44,14 +44,6 @@ class App extends Component {
       } else if (value === 'AC') {
         finishResult.innerHTML = '0';
         allAction.innerHTML = '0';
-        /* allAction.classList.add('before');
-        finishResult.classList.add('before');
-        allAction.classList.remove('clearBefore');
-        finishResult.classList.remove('clearBefore');
-         this.setState({
-          result: '',
-          actual: ''
-        }); */
       } else {
         finishResult.innerHTML += value;
       };
@@ -105,8 +97,6 @@ class App extends Component {
         });
       }
     }
-
-
 
     e.stopPropagation();
   }
