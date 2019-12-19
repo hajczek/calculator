@@ -39,12 +39,13 @@ class App extends Component {
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
         // Remove disabled attribute from decimal button after click button with action
-        document.getElementById("decimal").removeAttribute('disabled');
+        document.getElementById('decimal').removeAttribute('disabled');
         // Functionality for clear button
       } else if (value === 'AC') {
         finishResult.innerHTML = '0';
         allAction.innerHTML = '0';
       } else {
+        document.getElementById('equals').removeAttribute('disabled');
         finishResult.innerHTML += value;
       };
 
@@ -59,8 +60,8 @@ class App extends Component {
       // If statemen for decimal point which can be use only one time in number
       if (value === '.') {
         if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
-          // document.getElementById("decimal").textContent = '';
-          document.getElementById("decimal").setAttribute('disabled', 'true');
+          // document.getElementById('decimal').textContent = '';
+          document.getElementById('decimal').setAttribute('disabled', 'true');
         }
       }
 
@@ -76,6 +77,7 @@ class App extends Component {
       if (value === '=') {
         let Parser = require('expr-eval').Parser;
         let score = Parser.evaluate(this.state.result);
+        document.getElementById('equals').setAttribute('disabled', 'true');
 
         // Handle for length of result
         let scoreStr = score.toString();
