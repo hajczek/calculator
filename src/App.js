@@ -78,7 +78,9 @@ class App extends Component {
 
       // Functionality for = button - reset value of result
       if (value === '=') {
+        // Define parser with expr-eval
         let Parser = require('expr-eval').Parser;
+        // Handler for result
         let score = Parser.evaluate(this.state.result);
         // Add attribute disabled for equals button 
         equals.setAttribute('disabled', 'true');
@@ -92,13 +94,11 @@ class App extends Component {
           let shortScore = score.toPrecision(13);
           this.setState({
             result: shortScore,
-            // result: this.state.result + '=' + score,
             actual: shortScore
           });
         } else {
           this.setState({
             result: score,
-            // result: this.state.result + '=' + score,
             actual: score
           });
         }
