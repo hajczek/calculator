@@ -17,6 +17,7 @@ class App extends Component {
     let allAction = document.getElementById('allAction');
     let finishResult = document.getElementById('finishResult');
     let equals = document.getElementById('equals');
+    let decimal = document.getElementById('decimal');
 
     if (e.target.nodeName !== 'FORM') {
 
@@ -39,8 +40,9 @@ class App extends Component {
         // If else statement for display only action sign in actual field
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
-        // Remove disabled attribute from decimal button after click button with action
-        document.getElementById('decimal').removeAttribute('disabled');
+        // Remove disabled attribute from decimal and equals buttons after click button with action
+        decimal.removeAttribute('disabled');
+        equals.removeAttribute('disabled');
         // Functionality for clear button
       } else if (value === 'AC') {
         finishResult.innerHTML = '0';
@@ -62,8 +64,7 @@ class App extends Component {
       // If statemen for decimal point which can be use only one time in number
       if (value === '.') {
         if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
-          // document.getElementById('decimal').textContent = '';
-          document.getElementById('decimal').setAttribute('disabled', 'true');
+          decimal.setAttribute('disabled', 'true');
         }
       }
 
