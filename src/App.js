@@ -16,6 +16,7 @@ class App extends Component {
     let value = e.target.firstChild.nodeValue;
     let allAction = document.getElementById('allAction');
     let finishResult = document.getElementById('finishResult');
+    let equals = document.getElementById('equals');
 
     if (e.target.nodeName !== 'FORM') {
 
@@ -45,7 +46,8 @@ class App extends Component {
         finishResult.innerHTML = '0';
         allAction.innerHTML = '0';
       } else {
-        document.getElementById('equals').removeAttribute('disabled');
+        // Remove attribute disabled from equals button 
+        equals.removeAttribute('disabled');
         finishResult.innerHTML += value;
       };
 
@@ -77,7 +79,8 @@ class App extends Component {
       if (value === '=') {
         let Parser = require('expr-eval').Parser;
         let score = Parser.evaluate(this.state.result);
-        document.getElementById('equals').setAttribute('disabled', 'true');
+        // Add attribute disabled for equals button 
+        equals.setAttribute('disabled', 'true');
 
         // Handle for length of result
         let scoreStr = score.toString();
