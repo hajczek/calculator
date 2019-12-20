@@ -1,13 +1,20 @@
 # PROJECT 'CALCULATOR'
 
-## DESCRIPTION - How this code will works
+## DESCRIPTION - How this works
 
-This will be a calculator app.
+This is an easy calculator app.
 
-### WHAT WILL USE FOR THIS APPLICATION
+### USES TECHNOLOGIES FOR THIS APPLICATION
 
 - HTML<br>
 - CSS<br>
 - SASS<br>
 - JavaScript<br>
 - React
+
+### LINK
+
+[https://hajczek.github.io/calculator/](https://hajczek.github.io/calculator/)
+
+## LICENSE
+The MIT License - See [license.md](https://github.com/hajczek/calculator/blob/master/license/License.md)
