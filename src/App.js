@@ -29,19 +29,34 @@ class App extends Component {
       finishResult.classList.add('clearBefore');
 
       allAction.innerHTML += value;
-      // finishResult.innerHTML += value;
 
       // Display only number, without action sign - in actual field
-      if (this.state.actual === '+' || this.state.actual === '-' || this.state.actual === '*' || this.state.actual === '/') {
+      if (
+        this.state.actual === '+'
+        || this.state.actual === '-'
+        || this.state.actual === '*'
+        || this.state.actual === '/'
+      ) {
         finishResult.innerHTML = value;
 
         // Clear 0 from fields actual and result after click button different than decimal
-      } else if (this.state.result === '0' && this.state.actual === '0' && value !== '.' && value !== 'AC' && value !== '=') {
+      } else if (
+        this.state.result === '0'
+        && this.state.actual === '0'
+        && value !== '.'
+        && value !== 'AC'
+        && value !== '='
+      ) {
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
 
         // Display only action sign in actual field
-      } else if (value === '+' || value === '-' || value === '/' || value === '*') {
+      } else if (
+        value === '+' ||
+        value === '-' ||
+        value === '/' ||
+        value === '*'
+      ) {
         finishResult.innerHTML = value;
 
         // Remove disabled attribute from number, decimal and equals buttons after click button with action
@@ -68,7 +83,10 @@ class App extends Component {
 
       // Display '0' only one time on the beginning of the number
       if (value === '0') {
-        if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
+        if (
+          allAction.firstChild.nodeValue.indexOf('0') === 0 &&
+          allAction.firstChild.nodeValue.indexOf('.') !== 1
+        ) {
           allAction.innerHTML = '0';
           finishResult.innerHTML = '0';
         }
