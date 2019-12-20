@@ -24,8 +24,8 @@ body {
   .container {
     background-color: $bg-container-color;
     display: flex;
-    width: 110px;
-    height: 166px;
+    width: 330px;
+    height: 505px;
     padding: 2px 2px 0 2px;
     flex-direction: row;
     flex-wrap: wrap;
@@ -36,16 +36,16 @@ body {
     div {
       border: none;
       padding: 2px 0;
-      height:20px;
-      margin: 1px;
+      height: 60px;
+      margin: 5px;
+      font-size: 1.6rem;
     }
 
     .result {
-      width: 94%;
+      width: 96%;
       color: $result-color;
       text-align: right;
-      padding: 3px 2px 7px;
-      font-size: 0.65rem;
+      padding: 8px 2px 3px;
       background-color: $bg-result-color;      
       overflow: hidden; 
 
@@ -66,11 +66,11 @@ body {
         color: $all-action-color;
         padding: 0;
         margin: 0;
-        font-size: 0.9em;
+        font-size: 1.3rem;
       }
 
       #finishResult {
-        font-size: 1.2em;
+        font-size: 1.8rem;
         padding: 0;
         margin: 0;
       }
@@ -83,7 +83,7 @@ body {
       justify-content: space-around;   
   
       .ac {
-        width: 70px;
+        width: 210px;
         text-align: center;
         background-color: $reset-color;
         color: $ac-color;
@@ -110,11 +110,13 @@ body {
 
       .act {
         background-color: $btn-action-bg-color;
+        font-size: 2rem;
       }
 
       .equal {
         background-color: $btn-equal-bg-color;
         border-color: $btn-equal-bg-color;
+        font-size: 2rem;
       }
 
       #decimal {
