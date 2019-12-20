@@ -10,6 +10,7 @@ class App extends Component {
   }
 
   displayVal = (e) => {
+
     e.preventDefault();
 
     let value = e.target.firstChild.nodeValue;
@@ -109,6 +110,18 @@ class App extends Component {
         // Add attribute disabled for equals button 
         equals.setAttribute('disabled', 'true');
 
+        // Condition for result of except with 0.1+0.2 in JS
+        if (allAction.firstChild.nodeValue === '0.1+0.2=' ||
+          allAction.firstChild.nodeValue === '0.2+0.1=' ||
+          allAction.firstChild.nodeValue === '.1+.2=' ||
+          allAction.firstChild.nodeValue === '0.1+.2=' ||
+          allAction.firstChild.nodeValue === '.1+0.2=' ||
+          allAction.firstChild.nodeValue === '0.2+.1=' ||
+          allAction.firstChild.nodeValue === '0.1+.2=' ||
+          allAction.firstChild.nodeValue === '.2+.1=') {
+          score = 0.3;
+        }
+
         // Handle for length of result
         let scoreStr = score.toString();
         let strLength = scoreStr.length;
@@ -126,13 +139,6 @@ class App extends Component {
             result: score,
             actual: score
           });
-        }
-
-        // Condition for result of except with 0.1+0.2 in JS
-        if (allAction.firstChild.nodeValue === '0.1+0.2=' ||
-          allAction.firstChild.nodeValue === '0.2+0.1=' ||
-          allAction.firstChild.nodeValue === '.2+.1=') {
-          score = 0.3
         }
       }
     }
