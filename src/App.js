@@ -17,7 +17,7 @@ class App extends Component {
     let finishResult = document.getElementById('finishResult');
     let equals = document.getElementById('equals');
     let decimal = document.getElementById('decimal');
-    let disabled = document.querySelector('[disabled="true"]');
+    let disabledNum = document.querySelector('[disabled="true"]');
 
     if (e.target.nodeName !== 'FORM') {
 
@@ -46,13 +46,13 @@ class App extends Component {
         // Remove disabled attribute from decimal and equals buttons after click button with action
         decimal.removeAttribute('disabled');
         equals.removeAttribute('disabled');
-        disabled.removeAttribute('disabled');
+        disabledNum.removeAttribute('disabled');
 
         // Functionality for clear button
       } else if (value === 'AC') {
         finishResult.innerHTML = '0';
         allAction.innerHTML = '0';
-        disabled.removeAttribute('disabled');
+        disabledNum.removeAttribute('disabled');
 
       } else {
         // Remove attribute disabled from equals button 
