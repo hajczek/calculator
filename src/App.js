@@ -30,29 +30,34 @@ class App extends Component {
       allAction.innerHTML += value;
       // finishResult.innerHTML += value;
 
-      // If statement for display only number, without action sign - in actual field
+      // Display only number, without action sign - in actual field
       if (this.state.actual === '+' || this.state.actual === '-' || this.state.actual === '*' || this.state.actual === '/') {
         finishResult.innerHTML = value;
 
-        // If else statement for clear 0 from fields actual and result after click button different than decimal
+        // Clear 0 from fields actual and result after click button different than decimal
       } else if (this.state.result === '0' && this.state.actual === '0' && value !== '.' && value !== 'AC' && value !== '=') {
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
 
-        // If else statement for display only action sign in actual field
+        // Display only action sign in actual field
       } else if (value === '+' || value === '-' || value === '/' || value === '*') {
         finishResult.innerHTML = value;
 
-        // Remove disabled attribute from decimal and equals buttons after click button with action
+        // Remove disabled attribute from number, decimal and equals buttons after click button with action
         decimal.removeAttribute('disabled');
         equals.removeAttribute('disabled');
-        disabledNum.removeAttribute('disabled');
+        if (disabledNum) {
+          disabledNum.removeAttribute('disabled');
+        }
 
-        // Functionality for clear button
+        // Clear button
       } else if (value === 'AC') {
         finishResult.innerHTML = '0';
         allAction.innerHTML = '0';
-        disabledNum.removeAttribute('disabled');
+        // Remove disabled attribute if is on button with num 
+        if (disabledNum) {
+          disabledNum.removeAttribute('disabled');
+        }
 
       } else {
         // Remove attribute disabled from equals button 
@@ -60,7 +65,7 @@ class App extends Component {
         finishResult.innerHTML += value;
       };
 
-      // If statement for button with value '0' - it can be display more than one time on the beginning of the number
+      // Display '0' only one time on the beginning of the number
       if (value === '0') {
         if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
           allAction.innerHTML = '0';
@@ -68,7 +73,7 @@ class App extends Component {
         }
       }
 
-      // If statemen for decimal point which can be use only one time in number
+      // Use decimal  only one time in number
       if (value === '.') {
         if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
           decimal.setAttribute('disabled', 'true');
@@ -78,18 +83,21 @@ class App extends Component {
       let result = allAction.firstChild.nodeValue;
       let actual = finishResult.firstChild.nodeValue;
 
+      // Check length of introduced number
       if (actual.length > 13 && e.target.attributes[1].value === 'small num') {
+        // If is to long block posibility to put next sign
         e.target.setAttribute('disabled', 'true');
       } else {
         e.target.removeAttribute('disabled');
       }
 
+      // Set state of application
       this.setState({
         result: result,
         actual: actual
       });
 
-      // Functionality for = button - reset value of result
+      // Functionality for '=' button - reset value of result
       if (value === '=') {
 
         // Define parser with expr-eval
@@ -107,6 +115,7 @@ class App extends Component {
 
         // Functionality for long numbers
         if (strLength > 14) {
+          // If result number is too long, shorten it
           let shortScore = score.toPrecision(13);
           this.setState({
             result: shortScore,
