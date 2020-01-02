@@ -98,7 +98,16 @@ class App extends Component {
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
         // value === 'AC' ? finishResult.innerHTML = '0' : allAction.innerHTML = '0';
-      } else {
+      } else if (allAction.textContent.includes('=')
+        && value === '+'
+        && value === '-'
+        && value === '/'
+        && value === '*') {
+        console.log(allAction.textContent.indexOf('='));
+        allAction.innerHTML = value;
+        finishResult.innerHTML = value;
+      }
+      else {
         // Remove attribute disabled from equals button 
         equals.removeAttribute('disabled');
         finishResult.innerHTML += value;
@@ -120,8 +129,6 @@ class App extends Component {
         result: result,
         actual: actual
       });
-
-
 
       // Functionality for '=' button - reset value of result
       if (value === '=') {
@@ -159,12 +166,12 @@ class App extends Component {
           // If result number is too long, shorten it
           let shortScore = score.toPrecision(13);
           this.setState({
-            result: shortScore,
+            result: result + shortScore,
             actual: shortScore
           });
         } else {
           this.setState({
-            result: score,
+            result: result + score,
             actual: score
           });
         }
