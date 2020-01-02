@@ -42,8 +42,7 @@ class App extends Component {
         finishResult.innerHTML = value;
 
         // Clear 0 from fields actual and result after click button different than decimal
-      } else if (
-        this.state.result === '0'
+      } else if (this.state.result === '0'
         && this.state.actual === '0'
         && value !== '.'
         && value !== 'AC'
@@ -85,16 +84,13 @@ class App extends Component {
 
       // Display '0' only one time on the beginning of the number
       if (value === '0') {
-        if (
-          allAction.firstChild.nodeValue.indexOf('0') === 0 &&
-          allAction.firstChild.nodeValue.indexOf('.') !== 1
-        ) {
+        if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
           allAction.innerHTML = '0';
           finishResult.innerHTML = '0';
         }
       }
 
-      // Use decimal  only one time in number
+      // Use decimal only one time in number
       if (value === '.') {
         if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
           decimal.setAttribute('disabled', 'true');
@@ -125,17 +121,7 @@ class App extends Component {
           result: value,
           actual: value
         });
-        if (value === 'AC') {
-          this.setState({
-            result: 0,
-            actual: 0
-          });
-        }
-      }
-
-      if (value === '=' && this.state.actual === '' && this.state.result === '') {
-        finishResult.innerHTML = '0';
-        allAction.innerHTML = '0';
+        value === 'AC' ? finishResult.innerHTML = '0' : allAction.innerHTML = '0';
       }
 
       // Functionality for '=' button - reset value of result
@@ -185,8 +171,10 @@ class App extends Component {
         }
       }
     }
+
     e.stopPropagation();
   }
+
 
   render() {
     return (

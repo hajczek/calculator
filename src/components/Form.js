@@ -19,7 +19,7 @@ function Form(props) {
       <button id="three" className="small num">3</button>
       <button id="zero" className="small num">0</button>
       <button id="decimal" className="small act">.</button>
-      <button id='equals' className="small equal">=</button>
+      <button id='equals' className="small equal" disabled>=</button>
     </form>
   );
 }
