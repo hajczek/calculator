@@ -133,6 +133,11 @@ class App extends Component {
         }
       }
 
+      if (value === '=' && this.state.actual === '' && this.state.result === '') {
+        finishResult.innerHTML = '0';
+        allAction.innerHTML = '0';
+      }
+
       // Functionality for '=' button - reset value of result
       if (value === '=') {
 
@@ -169,12 +174,12 @@ class App extends Component {
           // If result number is too long, shorten it
           let shortScore = score.toPrecision(13);
           this.setState({
-            result: value += shortScore,
+            result: shortScore,
             actual: shortScore
           });
         } else {
           this.setState({
-            result: value += score,
+            result: score,
             actual: score
           });
         }
