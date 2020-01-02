@@ -76,26 +76,33 @@ class App extends Component {
           disabledNum.removeAttribute('disabled');
         }
 
+      } // Display '0' only one time on the beginning of the number
+      else if (value === '0') {
+        if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
+          allAction.innerHTML = '0';
+          finishResult.innerHTML = '0';
+        }
+      } // Use decimal only one time in number
+      else if (value === '.') {
+        if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
+          decimal.setAttribute('disabled', 'true');
+        }
+      } // Clear class 'clearAll' from button '=' when clicked any without value '+, -, /, or *'.
+      else if (document.querySelector('.clearAll')
+        && value !== '+'
+        && value !== '-'
+        && value !== '/'
+        && value !== '*') {
+        allAction.classList.remove('clearAll');
+        finishResult.classList.remove('clearAll');
+        allAction.innerHTML = value;
+        finishResult.innerHTML = value;
+        // value === 'AC' ? finishResult.innerHTML = '0' : allAction.innerHTML = '0';
       } else {
         // Remove attribute disabled from equals button 
         equals.removeAttribute('disabled');
         finishResult.innerHTML += value;
       };
-
-      // Display '0' only one time on the beginning of the number
-      if (value === '0') {
-        if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
-          allAction.innerHTML = '0';
-          finishResult.innerHTML = '0';
-        }
-      }
-
-      // Use decimal only one time in number
-      if (value === '.') {
-        if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
-          decimal.setAttribute('disabled', 'true');
-        }
-      }
 
       let result = allAction.firstChild.nodeValue;
       let actual = finishResult.firstChild.nodeValue;
@@ -114,15 +121,7 @@ class App extends Component {
         actual: actual
       });
 
-      if (document.querySelector('.clearAll')) {
-        allAction.classList.remove('clearAll');
-        finishResult.classList.remove('clearAll');
-        this.setState({
-          result: value,
-          actual: value
-        });
-        value === 'AC' ? finishResult.innerHTML = '0' : allAction.innerHTML = '0';
-      }
+
 
       // Functionality for '=' button - reset value of result
       if (value === '=') {
