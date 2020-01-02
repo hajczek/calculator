@@ -118,8 +118,20 @@ class App extends Component {
         actual: actual
       });
 
+      if (document.querySelector('.clearAll')) {
+        allAction.classList.remove('clearAll');
+        finishResult.classList.remove('clearAll');
+        this.setState({
+          result: value,
+          actual: value
+        });
+      }
+
       // Functionality for '=' button - reset value of result
       if (value === '=') {
+
+        allAction.classList.add('clearAll');
+        finishResult.classList.add('clearAll');
 
         // Define parser with expr-eval
         let Parser = require('expr-eval').Parser;
