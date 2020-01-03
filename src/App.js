@@ -6,9 +6,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      result: '',
-      actual: '',
-      onlyResult: ''
+      result: '0',
+      actual: '0'
     }
   }
 
@@ -45,9 +44,9 @@ class App extends Component {
         // Clear 0 from fields 'actual' and 'result' after click button different than decimal
       } else if (this.state.result === '0'
         && this.state.actual === '0'
-        && value !== '.'
-        && value !== 'AC'
-        && value !== '='
+        && (value !== '.'
+          || value !== 'AC'
+          || value !== '=')
       ) {
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
@@ -69,15 +68,17 @@ class App extends Component {
         }
 
       } // Display '0' only one time on the beginning of the number
-      else if (value === '0') {
-        if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
-          allAction.innerHTML = '0';
-          finishResult.innerHTML = '0';
-        }
+      else if (
+        allAction.firstChild.nodeValue.indexOf('0') === 0
+        && allAction.firstChild.nodeValue.indexOf('.') !== 1
+      ) {
+        allAction.innerHTML = '0';
+        finishResult.innerHTML = '0';
       } // Use decimal only one time in number
       else if (value === '.') {
         if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
           decimal.setAttribute('disabled', 'true');
+          allAction.innerHTML += value;
         }
       } // Clear class 'clearAll' from allAction and finishResult when clicked any button without value '+, -, /, or *'.
       else if (document.querySelector('.clearAll')
@@ -126,15 +127,6 @@ class App extends Component {
         actual: actual
       });
 
-      if ((e.target.textContent === '+'
-        || e.target.textContent === '-'
-        || e.target.textContent === '/'
-        || e.target.textContent === '*') && allAction.textContent.includes('=')) {
-        this.setState({
-          result: this.state.onlyResult + value
-        });
-      }
-
       // Functionality for '=' button
       if (value === '=') {
 
@@ -167,25 +159,22 @@ class App extends Component {
         let strLength = scoreStr.length;
 
         // Functionality for long numbers
-        if (strLength > 14) {
+        if (strLength > 16) {
           // If result number is too long, shorten it
           let shortScore = score.toPrecision(13);
           this.setState({
-            result: result + shortScore,
-            actual: shortScore,
-            onlyResult: shortScore
+            result: shortScore,
+            actual: shortScore
           });
 
         } else {
           this.setState({
-            result: result + score,
-            actual: score,
-            onlyResult: score
+            result: score,
+            actual: score
           });
         }
       }
     }
-
     e.stopPropagation();
   }
 
