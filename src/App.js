@@ -7,7 +7,8 @@ class App extends Component {
     super();
     this.state = {
       result: '',
-      actual: ''
+      actual: '',
+      onlyResult: ''
     }
   }
 
@@ -41,7 +42,7 @@ class App extends Component {
       ) {
         finishResult.innerHTML = value;
 
-        // Clear 0 from fields actual and result after click button different than decimal
+        // Clear 0 from fields 'actual' and 'result' after click button different than decimal
       } else if (this.state.result === '0'
         && this.state.actual === '0'
         && value !== '.'
@@ -67,15 +68,6 @@ class App extends Component {
           disabledNum.removeAttribute('disabled');
         }
 
-        // Clear button
-      } else if (value === 'AC') {
-        finishResult.innerHTML = '0';
-        allAction.innerHTML = '0';
-        // Remove disabled attribute if is on button with num 
-        if (disabledNum) {
-          disabledNum.removeAttribute('disabled');
-        }
-
       } // Display '0' only one time on the beginning of the number
       else if (value === '0') {
         if (allAction.firstChild.nodeValue.indexOf('0') === 0 && allAction.firstChild.nodeValue.indexOf('.') !== 1) {
@@ -87,25 +79,29 @@ class App extends Component {
         if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
           decimal.setAttribute('disabled', 'true');
         }
-      } // Clear class 'clearAll' from button '=' when clicked any without value '+, -, /, or *'.
+      } // Clear class 'clearAll' from allAction and finishResult when clicked any button without value '+, -, /, or *'.
       else if (document.querySelector('.clearAll')
         && value !== '+'
         && value !== '-'
         && value !== '/'
-        && value !== '*') {
+        && value !== '*'
+        && value !== 'AC') {
         allAction.classList.remove('clearAll');
         finishResult.classList.remove('clearAll');
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
-        // value === 'AC' ? finishResult.innerHTML = '0' : allAction.innerHTML = '0';
-      } else if (allAction.textContent.includes('=')
-        && value === '+'
-        && value === '-'
-        && value === '/'
-        && value === '*') {
-        console.log(allAction.textContent.indexOf('='));
-        allAction.innerHTML = value;
-        finishResult.innerHTML = value;
+      } // Clear button
+      else if (value === 'AC') {
+        finishResult.innerHTML = '0';
+        allAction.innerHTML = '0';
+
+        allAction.classList.remove('clearAll');
+        finishResult.classList.remove('clearAll');
+
+        // Remove disabled attribute if is on button with num 
+        if (disabledNum) {
+          disabledNum.removeAttribute('disabled');
+        }
       }
       else {
         // Remove attribute disabled from equals button 
@@ -130,7 +126,16 @@ class App extends Component {
         actual: actual
       });
 
-      // Functionality for '=' button - reset value of result
+      if ((e.target.textContent === '+'
+        || e.target.textContent === '-'
+        || e.target.textContent === '/'
+        || e.target.textContent === '*') && allAction.textContent.includes('=')) {
+        this.setState({
+          result: this.state.onlyResult + value
+        });
+      }
+
+      // Functionality for '=' button
       if (value === '=') {
 
         allAction.classList.add('clearAll');
@@ -154,7 +159,7 @@ class App extends Component {
           allAction.firstChild.nodeValue === '0.2+.1=' ||
           allAction.firstChild.nodeValue === '0.1+.2=' ||
           allAction.firstChild.nodeValue === '.2+.1=') {
-          score = 0.3;
+          score = score.toFixed(1); // 0.3
         }
 
         // Handle for length of result
@@ -167,12 +172,15 @@ class App extends Component {
           let shortScore = score.toPrecision(13);
           this.setState({
             result: result + shortScore,
-            actual: shortScore
+            actual: shortScore,
+            onlyResult: shortScore
           });
+
         } else {
           this.setState({
             result: result + score,
-            actual: score
+            actual: score,
+            onlyResult: score
           });
         }
       }
