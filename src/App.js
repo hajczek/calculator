@@ -6,8 +6,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      result: '0',
-      actual: '0'
+      result: 0,
+      actual: 0
     }
   }
 
@@ -32,7 +32,7 @@ class App extends Component {
 
       allAction.innerHTML += value;
 
-      // Display only number, without action sign - in actual field
+      // Display only number in actual field
       if (
         this.state.actual === '+'
         || this.state.actual === '-'
@@ -40,61 +40,15 @@ class App extends Component {
         || this.state.actual === '/'
       ) {
         finishResult.innerHTML = value;
+        console.log(finishResult);
+      }
 
-        // Clear 0 from fields 'actual' and 'result' after click button different than decimal
-      } else if (this.state.result === '0'
-        && this.state.actual === '0'
-        && (value !== '.'
-          || value !== 'AC'
-          || value !== '=')
-      ) {
-        allAction.innerHTML = value;
-        finishResult.innerHTML = value;
-
-        // Display only action sign in actual field
-      } else if (
-        value === '+' ||
-        value === '-' ||
-        value === '/' ||
-        value === '*'
-      ) {
-        finishResult.innerHTML = value;
-
-        // Remove disabled attribute from number, decimal and equals buttons after click button with action
-        decimal.removeAttribute('disabled');
-        equals.removeAttribute('disabled');
-        if (disabledNum) {
-          disabledNum.removeAttribute('disabled');
-        }
-
-      } // Display '0' only one time on the beginning of the number
-      else if (
-        allAction.firstChild.nodeValue.indexOf('0') === 0
-        && allAction.firstChild.nodeValue.indexOf('.') !== 1
-      ) {
-        allAction.innerHTML = '0';
-        finishResult.innerHTML = '0';
-      } // Use decimal only one time in number
-      else if (value === '.') {
-        if (finishResult.firstChild.nodeValue.indexOf('.') !== -1) {
-          decimal.setAttribute('disabled', 'true');
-          allAction.innerHTML += value;
-        }
-      } // Clear class 'clearAll' from allAction and finishResult when clicked any button without value '+, -, /, or *'.
-      else if (document.querySelector('.clearAll')
-        && value !== '+'
-        && value !== '-'
-        && value !== '/'
-        && value !== '*'
-        && value !== 'AC') {
-        allAction.classList.remove('clearAll');
-        finishResult.classList.remove('clearAll');
-        allAction.innerHTML = value;
-        finishResult.innerHTML = value;
-      } // Clear button
       else if (value === 'AC') {
-        finishResult.innerHTML = '0';
-        allAction.innerHTML = '0';
+        allAction.innerHTML = 0;
+        finishResult.innerHTML = 0;
+
+        console.log(allAction.firstChild.nodeValue);
+        console.log(finishResult.firstChild.nodeValue);
 
         allAction.classList.remove('clearAll');
         finishResult.classList.remove('clearAll');
@@ -104,17 +58,100 @@ class App extends Component {
           disabledNum.removeAttribute('disabled');
         }
       }
+      else if (value === '.' && (this.state.result === 0 || this.state.result === '0') && (this.state.actual === 0 || this.state.actual === '0')) {
+        finishResult.innerHTML += value;
+        console.log(this.state.result);
+        console.log(this.state.actual);
+      }
+      else if ((this.state.result === 0 || this.state.result === '0') && (this.state.actual === 0 || this.state.actual === '0') &&
+        this.state.actual !== '+'
+        && this.state.actual !== '-'
+        && this.state.actual !== '*'
+        && this.state.actual !== '/') {
+        console.log(allAction.firstChild.nodeValue);
+        console.log(allAction.firstChild.nodeValue);
+        finishResult.innerHTML = value;
+        allAction.innerHTML = value;
+      }
+      // Clear 0 from fields 'actual' and 'result' after click button different than number
+      else if (allAction.textContent === '0'
+        && finishResult.textContent === '0'
+        && value !== '.'
+        && value !== 'AC'
+        && value !== '='
+      ) {
+        console.log(e.target.className);
+        allAction.innerHTML = value;
+        finishResult.innerHTML = value;
+
+        console.log(allAction.textContent);
+        console.log(finishResult.textContent);
+      }
+      else if (value === '.' && finishResult.textContent.includes('.') && allAction.textContent.includes('.')) {
+        decimal.setAttribute('disabled', 'true');
+        allAction.innerHTML = this.state.result;
+        console.log(finishResult.textContent);
+        console.log(allAction.textContent);
+
+      }
+      else if (value === '.' && finishResult.textContent.includes('.') && allAction.textContent.includes('.') && this.state.result !== 0 && this.state.actual !== 0) {
+        decimal.setAttribute('disabled', 'true');
+        finishResult.innerHTML += value;
+        console.log(finishResult.textContent);
+        console.log(allAction.textContent);
+
+      }
+      // Display only action sign in actual field
+      else if (
+        value === '+' ||
+        value === '-' ||
+        value === '/' ||
+        value === '*'
+      ) {
+        finishResult.innerHTML = value;
+
+        console.log(finishResult);
+
+        // Remove disabled attribute from number, decimal and equals buttons after click button with action
+        decimal.removeAttribute('disabled');
+        equals.removeAttribute('disabled');
+        if (disabledNum) {
+          disabledNum.removeAttribute('disabled');
+        }
+
+      }
+      else if (document.querySelector('.clearAll')
+        && value !== '+'
+        && value !== '-'
+        && value !== '/'
+        && value !== '*'
+        && value !== 'AC') {
+        allAction.classList.remove('clearAll');
+        finishResult.classList.remove('clearAll');
+
+        allAction.innerHTML = value;
+        finishResult.innerHTML = value;
+
+        console.log(allAction);
+        console.log(finishResult);
+
+      }
       else {
         // Remove attribute disabled from equals button 
         equals.removeAttribute('disabled');
         finishResult.innerHTML += value;
+
+        console.log(finishResult);
       };
 
       let result = allAction.firstChild.nodeValue;
       let actual = finishResult.firstChild.nodeValue;
 
+      console.log(result, typeof result);
+      console.log(actual, typeof actual);
+
       // Check length of introduced number
-      if (actual.length > 13 && e.target.attributes[1].value === 'small num') {
+      if (actual.length > 18 && e.target.attributes[1].value === 'small num') {
         // If is to long block posibility to put next sign
         e.target.setAttribute('disabled', 'true');
       } else {
@@ -177,7 +214,6 @@ class App extends Component {
     }
     e.stopPropagation();
   }
-
 
   render() {
     return (
