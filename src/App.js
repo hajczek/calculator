@@ -38,6 +38,7 @@ class App extends Component {
       ) {
         // Set new value for 'finishResult' field
         finishResult.innerHTML = value;
+
         // Remove attribute disabled from 'equals' button
         equals.removeAttribute('disabled');
       }
@@ -56,18 +57,19 @@ class App extends Component {
         }
       }
       // Leave 0 if first clicked button is '.'
-      else if (value === '.' && (this.state.result === 0 || this.state.result === '0') && (this.state.actual === 0 || this.state.actual === '0')) {
-
+      else if (value === '.'
+        && (this.state.result === 0 || this.state.result === '0')
+        && (this.state.actual === 0 || this.state.actual === '0')) {
         // Add new value to field 'finishResult'
         finishResult.innerHTML += value;
       }
       // Remove 0 if first clicked button is different than action button
-      else if ((this.state.result === 0 || this.state.result === '0') && (this.state.actual === 0 || this.state.actual === '0') &&
-        this.state.actual !== '+'
+      else if ((this.state.result === 0 || this.state.result === '0')
+        && (this.state.actual === 0 || this.state.actual === '0')
+        && this.state.actual !== '+'
         && this.state.actual !== '-'
         && this.state.actual !== '*'
         && this.state.actual !== '/') {
-
         // Set new value for fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
@@ -79,7 +81,6 @@ class App extends Component {
         && value !== 'AC'
         && value !== '='
       ) {
-
         // Set new value for fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
@@ -88,24 +89,28 @@ class App extends Component {
       else if (value === '.' && finishResult.textContent.includes('.')) {
         // Set on button with decimal sign disabled attribute
         decimal.setAttribute('disabled', 'true');
+
         // Set result state value in 'allAction' field
         allAction.innerHTML = this.state.result;
 
       }
       // Allows to set sign '.' in next number
-      else if (value === '.' && finishResult.textContent.includes('.') && this.state.result !== 0 && this.state.actual !== 0) {
+      else if (value === '.'
+        && finishResult.textContent.includes('.')
+        && this.state.result !== 0
+        && this.state.actual !== 0) {
         // Set on button with decimal sign disabled attribute
         decimal.setAttribute('disabled', 'true');
+
         // Add new value to 'finishResult' field
         finishResult.innerHTML += value;
 
       }
       // Display only action sign in actual field
-      else if (
-        value === '+' ||
-        value === '-' ||
-        value === '/' ||
-        value === '*'
+      else if (value === '+'
+        || value === '-'
+        || value === '/'
+        || value === '*'
       ) {
         // Set new value in 'finishResult' field
         finishResult.innerHTML = value;
@@ -113,20 +118,19 @@ class App extends Component {
         // Remove disabled attribute from number, decimal and equals buttons after click button with action
         decimal.removeAttribute('disabled');
         equals.removeAttribute('disabled');
+
         if (disabledNum) {
           // Remove disabled attribute from buttons
           disabledNum.removeAttribute('disabled');
         }
-
       }
       // Display all value if clicked is button with number
-      else if (
-        value !== '+' ||
-        value !== '-' ||
-        value !== '/' ||
-        value !== '*' ||
-        value !== 'AC' ||
-        value !== '='
+      else if (value !== '+'
+        || value !== '-'
+        || value !== '/'
+        || value !== '*'
+        || value !== 'AC'
+        || value !== '='
       ) {
         // Add new value to 'finishResult' field
         finishResult.innerHTML += value;
@@ -159,7 +163,7 @@ class App extends Component {
 
       // Check length of introduced number
       if (actual.length > 10 && e.target.attributes[1].value === 'small num') {
-        // If is too long block posibilities to put next sign
+        // If checked length is too long, block posibilities to put next sign
         e.target.setAttribute('disabled', 'true');
       } else {
         e.target.removeAttribute('disabled');
