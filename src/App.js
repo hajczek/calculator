@@ -192,14 +192,14 @@ class App extends Component {
         equals.setAttribute('disabled', 'true');
 
         // Condition for result of except with 0.1+0.2 in JS
-        if (allAction.firstChild.nodeValue === '0.1+0.2=' ||
-          allAction.firstChild.nodeValue === '0.2+0.1=' ||
-          allAction.firstChild.nodeValue === '.1+.2=' ||
-          allAction.firstChild.nodeValue === '0.1+.2=' ||
-          allAction.firstChild.nodeValue === '.1+0.2=' ||
-          allAction.firstChild.nodeValue === '0.2+.1=' ||
-          allAction.firstChild.nodeValue === '0.1+.2=' ||
-          allAction.firstChild.nodeValue === '.2+.1=') {
+        if (allAction.firstChild.nodeValue === '0.1+0.2='
+          || allAction.firstChild.nodeValue === '0.2+0.1='
+          || allAction.firstChild.nodeValue === '.1+.2='
+          || allAction.firstChild.nodeValue === '0.1+.2='
+          || allAction.firstChild.nodeValue === '.1+0.2='
+          || allAction.firstChild.nodeValue === '0.2+.1='
+          || allAction.firstChild.nodeValue === '0.1+.2='
+          || allAction.firstChild.nodeValue === '.2+.1=') {
           score = score.toFixed(1); // 0.3
         }
 
