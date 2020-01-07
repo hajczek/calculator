@@ -15,6 +15,7 @@ class App extends Component {
 
     e.preventDefault();
 
+    // Defined handles
     let value = e.target.firstChild.nodeValue;
     let allAction = document.getElementById('allAction');
     let finishResult = document.getElementById('finishResult');
@@ -22,21 +23,25 @@ class App extends Component {
     let decimal = document.getElementById('decimal');
     let disabledNum = document.querySelector('[disabled="true"]');
 
+    // Check if clicked element is not a 'FORM'
     if (e.target.nodeName !== 'FORM') {
 
+      // Set new value for 'allAction' field
       allAction.innerHTML += value;
 
-      // Display only number in actual field
+      // Display only action sign in 'actual' field
       if (
         this.state.actual === '+'
         || this.state.actual === '-'
         || this.state.actual === '*'
         || this.state.actual === '/'
       ) {
+        // Set new value for 'finishResult' field
         finishResult.innerHTML = value;
+        equals.removeAttribute('disabled');
         console.log(finishResult);
       }
-
+      // Set value for fields 'allAction' and 'finishResult' to '0'
       else if (value === 'AC') {
         allAction.innerHTML = 0;
         finishResult.innerHTML = 0;
@@ -44,6 +49,7 @@ class App extends Component {
         console.log(allAction.firstChild.nodeValue);
         console.log(finishResult.firstChild.nodeValue);
 
+        // Remove class 'clearAll' from fields 'allAction' and 'finishResult'
         allAction.classList.remove('clearAll');
         finishResult.classList.remove('clearAll');
 
@@ -52,12 +58,16 @@ class App extends Component {
           disabledNum.removeAttribute('disabled');
         }
       }
+      // Leave 0 if first clicked button is '.'
       else if (value === '.' && (this.state.result === 0 || this.state.result === '0') && (this.state.actual === 0 || this.state.actual === '0')) {
+
+        // Add new value to field 'finishResult'
         finishResult.innerHTML += value;
 
         console.log(this.state.result);
         console.log(this.state.actual);
       }
+      // Remove 0 if first clicked button is different than action button
       else if ((this.state.result === 0 || this.state.result === '0') && (this.state.actual === 0 || this.state.actual === '0') &&
         this.state.actual !== '+'
         && this.state.actual !== '-'
@@ -67,11 +77,11 @@ class App extends Component {
         console.log(allAction.firstChild.nodeValue);
         console.log(allAction.firstChild.nodeValue);
 
-        finishResult.innerHTML = value;
+        // Set new value for fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
+        finishResult.innerHTML = value;
       }
-
-      // Clear 0 from fields 'actual' and 'result' after click button with number
+      // Clear 0 from fields 'allAction' and 'finishResult' after click button with number
       else if (allAction.textContent === '0'
         && finishResult.textContent === '0'
         && value !== '.'
@@ -80,22 +90,31 @@ class App extends Component {
       ) {
         console.log(e.target.className);
 
+        // Set new value for fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
 
         console.log(allAction.textContent);
         console.log(finishResult.textContent);
       }
-      else if (value === '.' && finishResult.textContent.includes('.') && allAction.textContent.includes('.')) {
+      // Protection from add more signs '.' than one in number
+      else if (value === '.' && finishResult.textContent.includes('.')) {
+        // Set on button with decimal sign disabled attribute
         decimal.setAttribute('disabled', 'true');
+        // Set result state value in 'allAction' field
         allAction.innerHTML = this.state.result;
+
         console.log(finishResult.textContent);
         console.log(allAction.textContent);
 
       }
-      else if (value === '.' && finishResult.textContent.includes('.') && allAction.textContent.includes('.') && this.state.result !== 0 && this.state.actual !== 0) {
+      // Allows to set sign '.' in next number
+      else if (value === '.' && finishResult.textContent.includes('.') && this.state.result !== 0 && this.state.actual !== 0) {
+        // Set on button with decimal sign disabled attribute
         decimal.setAttribute('disabled', 'true');
+        // Add new value to 'finishResult' field
         finishResult.innerHTML += value;
+
         console.log(finishResult.textContent);
         console.log(allAction.textContent);
 
@@ -107,6 +126,7 @@ class App extends Component {
         value === '/' ||
         value === '*'
       ) {
+        // Set new value in 'finishResult' field
         finishResult.innerHTML = value;
 
         console.log(finishResult);
@@ -115,19 +135,23 @@ class App extends Component {
         decimal.removeAttribute('disabled');
         equals.removeAttribute('disabled');
         if (disabledNum) {
+          // Remove disabled attribute from buttons
           disabledNum.removeAttribute('disabled');
         }
 
       }
+      // Check if element with class 'clearAll' exists when button with number is clicked
       else if (document.querySelector('.clearAll')
         && value !== '+'
         && value !== '-'
         && value !== '/'
         && value !== '*'
-        && value !== 'AC') {
+        && value !== 'AC'
+        && value !== '=') {
         allAction.classList.remove('clearAll');
         finishResult.classList.remove('clearAll');
 
+        // Set new value in fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
 
@@ -138,11 +162,13 @@ class App extends Component {
       else {
         // Remove attribute disabled from equals button 
         equals.removeAttribute('disabled');
+        // Add new value to 'finishResult' field
         finishResult.innerHTML += value;
 
         console.log(finishResult);
       };
 
+      // Handles for value of 'allAction' and 'finishResult' fields
       let result = allAction.firstChild.nodeValue;
       let actual = finishResult.firstChild.nodeValue;
 
@@ -151,13 +177,13 @@ class App extends Component {
 
       // Check length of introduced number
       if (actual.length > 18 && e.target.attributes[1].value === 'small num') {
-        // If is to long block posibility to put next sign
+        // If is too long block posibilities to put next sign
         e.target.setAttribute('disabled', 'true');
       } else {
         e.target.removeAttribute('disabled');
       }
 
-      // Set state of application
+      // Set states of application
       this.setState({
         result: result,
         actual: actual
@@ -166,16 +192,17 @@ class App extends Component {
       // Functionality for '=' button
       if (value === '=') {
 
+        // Add class 'clearAll' to 'allAction' and 'finishResult' fields
         allAction.classList.add('clearAll');
         finishResult.classList.add('clearAll');
 
         // Define parser with expr-eval
         let Parser = require('expr-eval').Parser;
 
-        // Handler for result
+        // Handle for result
         let score = Parser.evaluate(this.state.result);
 
-        // Add attribute disabled for equals button 
+        // Add attribute disabled to equals button 
         equals.setAttribute('disabled', 'true');
 
         // Condition for result of except with 0.1+0.2 in JS
@@ -195,9 +222,9 @@ class App extends Component {
         let strLength = scoreStr.length;
 
         // Functionality for long numbers
-        if (strLength > 16) {
+        if (strLength > 18) {
           // If result number is too long, shorten it
-          let shortScore = score.toPrecision(13);
+          let shortScore = score.toPrecision(18);
           this.setState({
             result: shortScore,
             actual: shortScore
