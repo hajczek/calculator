@@ -140,6 +140,18 @@ class App extends Component {
         }
 
       }
+      // Display all value if clicked is button with number
+      else if (
+        value !== '+' ||
+        value !== '-' ||
+        value !== '/' ||
+        value !== '*' ||
+        value !== 'AC' ||
+        value !== '='
+      ) {
+        // Add new value to 'finishResult' field
+        finishResult.innerHTML += value;
+      }
       // Check if element with class 'clearAll' exists when button with number is clicked
       else if (document.querySelector('.clearAll')
         && value !== '+'
