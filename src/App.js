@@ -38,16 +38,13 @@ class App extends Component {
       ) {
         // Set new value for 'finishResult' field
         finishResult.innerHTML = value;
+        // Remove attribute disabled from 'equals' button
         equals.removeAttribute('disabled');
-        console.log(finishResult);
       }
       // Set value for fields 'allAction' and 'finishResult' to '0'
       else if (value === 'AC') {
         allAction.innerHTML = 0;
         finishResult.innerHTML = 0;
-
-        console.log(allAction.firstChild.nodeValue);
-        console.log(finishResult.firstChild.nodeValue);
 
         // Remove class 'clearAll' from fields 'allAction' and 'finishResult'
         allAction.classList.remove('clearAll');
@@ -63,9 +60,6 @@ class App extends Component {
 
         // Add new value to field 'finishResult'
         finishResult.innerHTML += value;
-
-        console.log(this.state.result);
-        console.log(this.state.actual);
       }
       // Remove 0 if first clicked button is different than action button
       else if ((this.state.result === 0 || this.state.result === '0') && (this.state.actual === 0 || this.state.actual === '0') &&
@@ -73,9 +67,6 @@ class App extends Component {
         && this.state.actual !== '-'
         && this.state.actual !== '*'
         && this.state.actual !== '/') {
-
-        console.log(allAction.firstChild.nodeValue);
-        console.log(allAction.firstChild.nodeValue);
 
         // Set new value for fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
@@ -88,14 +79,10 @@ class App extends Component {
         && value !== 'AC'
         && value !== '='
       ) {
-        console.log(e.target.className);
 
         // Set new value for fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
-
-        console.log(allAction.textContent);
-        console.log(finishResult.textContent);
       }
       // Protection from add more signs '.' than one in number
       else if (value === '.' && finishResult.textContent.includes('.')) {
@@ -104,9 +91,6 @@ class App extends Component {
         // Set result state value in 'allAction' field
         allAction.innerHTML = this.state.result;
 
-        console.log(finishResult.textContent);
-        console.log(allAction.textContent);
-
       }
       // Allows to set sign '.' in next number
       else if (value === '.' && finishResult.textContent.includes('.') && this.state.result !== 0 && this.state.actual !== 0) {
@@ -114,9 +98,6 @@ class App extends Component {
         decimal.setAttribute('disabled', 'true');
         // Add new value to 'finishResult' field
         finishResult.innerHTML += value;
-
-        console.log(finishResult.textContent);
-        console.log(allAction.textContent);
 
       }
       // Display only action sign in actual field
@@ -128,8 +109,6 @@ class App extends Component {
       ) {
         // Set new value in 'finishResult' field
         finishResult.innerHTML = value;
-
-        console.log(finishResult);
 
         // Remove disabled attribute from number, decimal and equals buttons after click button with action
         decimal.removeAttribute('disabled');
@@ -166,26 +145,17 @@ class App extends Component {
         // Set new value in fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
-
-        console.log(allAction);
-        console.log(finishResult);
-
       }
       else {
         // Remove attribute disabled from equals button 
         equals.removeAttribute('disabled');
         // Add new value to 'finishResult' field
         finishResult.innerHTML += value;
-
-        console.log(finishResult);
       };
 
       // Handles for value of 'allAction' and 'finishResult' fields
       let result = allAction.firstChild.nodeValue;
       let actual = finishResult.firstChild.nodeValue;
-
-      console.log(result, typeof result);
-      console.log(actual, typeof actual);
 
       // Check length of introduced number
       if (actual.length > 10 && e.target.attributes[1].value === 'small num') {
