@@ -24,12 +24,6 @@ class App extends Component {
 
     if (e.target.nodeName !== 'FORM') {
 
-      allAction.classList.remove('before');
-      allAction.classList.add('clearBefore');
-
-      finishResult.classList.remove('before');
-      finishResult.classList.add('clearBefore');
-
       allAction.innerHTML += value;
 
       // Display only number in actual field
@@ -60,6 +54,7 @@ class App extends Component {
       }
       else if (value === '.' && (this.state.result === 0 || this.state.result === '0') && (this.state.actual === 0 || this.state.actual === '0')) {
         finishResult.innerHTML += value;
+
         console.log(this.state.result);
         console.log(this.state.actual);
       }
@@ -68,12 +63,15 @@ class App extends Component {
         && this.state.actual !== '-'
         && this.state.actual !== '*'
         && this.state.actual !== '/') {
+
         console.log(allAction.firstChild.nodeValue);
         console.log(allAction.firstChild.nodeValue);
+
         finishResult.innerHTML = value;
         allAction.innerHTML = value;
       }
-      // Clear 0 from fields 'actual' and 'result' after click button different than number
+
+      // Clear 0 from fields 'actual' and 'result' after click button with number
       else if (allAction.textContent === '0'
         && finishResult.textContent === '0'
         && value !== '.'
@@ -81,6 +79,7 @@ class App extends Component {
         && value !== '='
       ) {
         console.log(e.target.className);
+
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
 
