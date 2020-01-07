@@ -176,7 +176,7 @@ class App extends Component {
       console.log(actual, typeof actual);
 
       // Check length of introduced number
-      if (actual.length > 18 && e.target.attributes[1].value === 'small num') {
+      if (actual.length > 10 && e.target.attributes[1].value === 'small num') {
         // If is too long block posibilities to put next sign
         e.target.setAttribute('disabled', 'true');
       } else {
@@ -222,9 +222,9 @@ class App extends Component {
         let strLength = scoreStr.length;
 
         // Functionality for long numbers
-        if (strLength > 18) {
+        if (strLength > 15) {
           // If result number is too long, shorten it
-          let shortScore = score.toPrecision(18);
+          let shortScore = score.toPrecision(15);
           this.setState({
             result: shortScore,
             actual: shortScore
