@@ -117,6 +117,15 @@ class App extends Component {
         // Set new value in fields 'allAction' and 'finishResult'
         finishResult.innerHTML = value;
       }
+      // Display value with decimal sign when decimal sign is clicked after display result 
+      else if (document.querySelector('.clearAll')
+        && value === '.') {
+        allAction.classList.remove('clearAll');
+        finishResult.classList.remove('clearAll');
+
+        // Set new value in fields 'allAction' and 'finishResult'
+        finishResult.innerHTML += value;
+      }
       // Display only action sign in actual field
       else if (value === '+'
         || value === '-'
