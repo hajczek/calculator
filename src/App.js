@@ -112,8 +112,6 @@ class App extends Component {
           || value === '*')) {
         allAction.classList.remove('clearAll');
         finishResult.classList.remove('clearAll');
-        console.log('Done');
-        console.log(e.target.value);
         // Set new value in fields 'allAction' and 'finishResult'
         finishResult.innerHTML = value;
       }
