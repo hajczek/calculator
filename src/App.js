@@ -105,6 +105,7 @@ class App extends Component {
         // Add new value to 'finishResult' field
         finishResult.innerHTML += value;
       }
+      // Display value with action sign when action sign is clicked after display result
       else if (document.querySelector('.clearAll')
         && (value === '+'
           || value === '-'
@@ -112,6 +113,7 @@ class App extends Component {
           || value === '*')) {
         allAction.classList.remove('clearAll');
         finishResult.classList.remove('clearAll');
+
         // Set new value in fields 'allAction' and 'finishResult'
         finishResult.innerHTML = value;
       }
