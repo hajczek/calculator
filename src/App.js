@@ -104,7 +104,18 @@ class App extends Component {
 
         // Add new value to 'finishResult' field
         finishResult.innerHTML += value;
-
+      }
+      else if (document.querySelector('.clearAll')
+        && (value === '+'
+          || value === '-'
+          || value === '/'
+          || value === '*')) {
+        allAction.classList.remove('clearAll');
+        finishResult.classList.remove('clearAll');
+        console.log('Done');
+        console.log(e.target.value);
+        // Set new value in fields 'allAction' and 'finishResult'
+        finishResult.innerHTML = value;
       }
       // Display only action sign in actual field
       else if (value === '+'
@@ -123,27 +134,6 @@ class App extends Component {
           // Remove disabled attribute from buttons
           disabledNum.removeAttribute('disabled');
         }
-      } else if (document.querySelector('.clearAll')
-        && (value === '+'
-          || value === '-'
-          || value === '/'
-          || value === '*')) {
-        allAction.classList.remove('clearAll');
-        finishResult.classList.remove('clearAll');
-
-        // Set new value in fields 'allAction' and 'finishResult'
-        finishResult.innerHTML = value;
-      }
-      // Display all value if clicked is button with number
-      else if (value !== '+'
-        || value !== '-'
-        || value !== '/'
-        || value !== '*'
-        || value !== 'AC'
-        || value !== '='
-      ) {
-        // Add new value to 'finishResult' field
-        finishResult.innerHTML += value;
       }
       // Check if element with class 'clearAll' exists when button with number is clicked
       else if (document.querySelector('.clearAll')
@@ -159,6 +149,18 @@ class App extends Component {
         // Set new value in fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
+      }
+
+      // Display all value if clicked is button with number
+      else if (value !== '+'
+        || value !== '-'
+        || value !== '/'
+        || value !== '*'
+        || value !== 'AC'
+        || value !== '='
+      ) {
+        // Add new value to 'finishResult' field
+        finishResult.innerHTML += value;
       }
       else {
         // Remove attribute disabled from equals button 
