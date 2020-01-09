@@ -29,9 +29,36 @@ class App extends Component {
       // Set new value for 'allAction' field
       allAction.innerHTML += value;
 
+      // Display last action sign in 'actual' and 'finish' fields
+      if ((this.state.actual === '+'
+        || this.state.actual === '-'
+        || this.state.actual === '*'
+        || this.state.actual === '/')
+        && (value === '+'
+          || value === '-'
+          || value === '*'
+          || value === '/')
+      ) {
+        // Handle for value in allAction field
+        let all = allAction.textContent;
+
+        // Handle for last two sign in allAction field
+        let previousSign = all.substr(all.length - 2, 2);
+
+        // Handle for new value in allAction field
+        let newAllAction = all.replace(previousSign, value);
+
+        // Set newAllAction as a value od allAction field
+        allAction.innerHTML = newAllAction;
+
+        // Set new value for 'finishResult' field
+        finishResult.innerHTML = value;
+
+        // Remove attribute disabled from 'equals' button
+        equals.removeAttribute('disabled');
+      }
       // Display only action sign in 'actual' field
-      if (
-        this.state.actual === '+'
+      else if (this.state.actual === '+'
         || this.state.actual === '-'
         || this.state.actual === '*'
         || this.state.actual === '/'
