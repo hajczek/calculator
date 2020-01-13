@@ -185,13 +185,9 @@ class App extends Component {
       }
 
       // Display all value if clicked is button with number
-      else if (value !== '+'
-        || value !== '-'
-        || value !== '/'
-        || value !== '*'
+      else if (actOperators.some(notEqual(value))
         || value !== 'AC'
-        || value !== '='
-      ) {
+        || value !== '=') {
         // Add new value to 'finishResult' field
         finishResult.innerHTML += value;
       }
