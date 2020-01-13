@@ -52,8 +52,7 @@ class App extends Component {
         }
       }
       else if ((actOperators.some(equal(this.state.actual))
-        && actOperators.some(equal(value)))
-      ) {
+        && actOperators.some(equal(value)))) {
         // Handle for value in allAction field
         let all = allAction.textContent;
 
@@ -104,8 +103,7 @@ class App extends Component {
       // Remove 0 if first clicked button is different than action button
       else if ((this.state.result === 0 || this.state.result === '0')
         && (this.state.actual === 0 || this.state.actual === '0')
-        && actOperators.every(notEqual(this.state.actual))
-      ) {
+        && actOperators.every(notEqual(this.state.actual))) {
         // Set new value for fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
@@ -115,8 +113,7 @@ class App extends Component {
         && finishResult.textContent === '0'
         && value !== '.'
         && value !== 'AC'
-        && value !== '='
-      ) {
+        && value !== '=') {
         // Set new value for fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
@@ -128,7 +125,6 @@ class App extends Component {
 
         // Set result state value in 'allAction' field
         allAction.innerHTML = this.state.result;
-
       }
       // Allows to set sign '.' in next number
       else if (value === '.'
