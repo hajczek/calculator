@@ -30,7 +30,21 @@ class App extends Component {
       allAction.innerHTML += value;
 
       // Display last action sign in 'actual' and 'finish' fields
-      if ((this.state.actual === '+'
+      // Set value for fields 'allAction' and 'finishResult' to '0'
+      if (value === 'AC') {
+        allAction.innerHTML = 0;
+        finishResult.innerHTML = 0;
+
+        // Remove class 'clearAll' from fields 'allAction' and 'finishResult'
+        allAction.classList.remove('clearAll');
+        finishResult.classList.remove('clearAll');
+
+        // Remove disabled attribute if is on button with num 
+        if (disabledNum) {
+          disabledNum.removeAttribute('disabled');
+        }
+      }
+      else if ((this.state.actual === '+'
         || this.state.actual === '-'
         || this.state.actual === '*'
         || this.state.actual === '/')
