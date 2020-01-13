@@ -158,11 +158,7 @@ class App extends Component {
         finishResult.innerHTML += value;
       }
       // Display only action sign in actual field
-      else if (value === '+'
-        || value === '-'
-        || value === '/'
-        || value === '*'
-      ) {
+      else if (actOperators.some(equal(value))) {
         // Set new value in 'finishResult' field
         finishResult.innerHTML = value;
 
