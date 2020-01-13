@@ -24,7 +24,8 @@ class App extends Component {
     let disabledNum = document.querySelector('[disabled="true"]');
 
     const actOperators = ['+', '-', '*', '/'];
-    const check = a => b => a === b;
+    const equal = a => b => a === b;
+    const notEqual = a => b => a !== b;
 
     // Check if clicked element is not a 'FORM'
     if (e.target.nodeName !== 'FORM') {
@@ -47,8 +48,8 @@ class App extends Component {
           disabledNum.removeAttribute('disabled');
         }
       }
-      else if ((actOperators.some(check(this.state.actual))
-        && actOperators.some(check(value)))
+      else if ((actOperators.some(equal(this.state.actual))
+        && actOperators.some(equal(value)))
       ) {
         // Handle for value in allAction field
         let all = allAction.textContent;
@@ -69,7 +70,7 @@ class App extends Component {
         equals.removeAttribute('disabled');
       }
       // Display only action sign in 'actual' field
-      else if (actOperators.some(check(this.state.actual))) {
+      else if (actOperators.some(equal(this.state.actual))) {
         // Set new value for 'finishResult' field
         finishResult.innerHTML = value;
 
@@ -100,10 +101,8 @@ class App extends Component {
       // Remove 0 if first clicked button is different than action button
       else if ((this.state.result === 0 || this.state.result === '0')
         && (this.state.actual === 0 || this.state.actual === '0')
-        && this.state.actual !== '+'
-        && this.state.actual !== '-'
-        && this.state.actual !== '*'
-        && this.state.actual !== '/') {
+        && actOperators.every(notEqual(this.state.actual))
+      ) {
         // Set new value for fields 'allAction' and 'finishResult'
         allAction.innerHTML = value;
         finishResult.innerHTML = value;
