@@ -69,11 +69,7 @@ class App extends Component {
         equals.removeAttribute('disabled');
       }
       // Display only action sign in 'actual' field
-      else if (this.state.actual === '+'
-        || this.state.actual === '-'
-        || this.state.actual === '*'
-        || this.state.actual === '/'
-      ) {
+      else if (actOperators.some(check(this.state.actual))) {
         // Set new value for 'finishResult' field
         finishResult.innerHTML = value;
 
