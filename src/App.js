@@ -173,10 +173,7 @@ class App extends Component {
       }
       // Check if element with class 'clearAll' exists when button with number is clicked
       else if (document.querySelector('.clearAll')
-        && value !== '+'
-        && value !== '-'
-        && value !== '/'
-        && value !== '*'
+        && actOperators.every(notEqual(value))
         && value !== 'AC'
         && value !== '=') {
         allAction.classList.remove('clearAll');
