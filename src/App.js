@@ -23,6 +23,9 @@ class App extends Component {
     let decimal = document.getElementById('decimal');
     let disabledNum = document.querySelector('[disabled="true"]');
 
+    const actOperators = ['+', '-', '*', '/'];
+    const check = a => b => a === b;
+
     // Check if clicked element is not a 'FORM'
     if (e.target.nodeName !== 'FORM') {
 
@@ -44,14 +47,8 @@ class App extends Component {
           disabledNum.removeAttribute('disabled');
         }
       }
-      else if ((this.state.actual === '+'
-        || this.state.actual === '-'
-        || this.state.actual === '*'
-        || this.state.actual === '/')
-        && (value === '+'
-          || value === '-'
-          || value === '*'
-          || value === '/')
+      else if ((actOperators.some(check(this.state.actual))
+        && actOperators.some(check(value)))
       ) {
         // Handle for value in allAction field
         let all = allAction.textContent;
