@@ -23,7 +23,7 @@ class App extends Component {
     let decimal = document.getElementById('decimal');
     let disabledNum = document.querySelector('[disabled="true"]');
 
-    // Table with sction operators
+    // Table with action operators
     const actOperators = ['+', '-', '*', '/'];
     // Function checks if all elements are equal
     const equal = a => b => a === b;
