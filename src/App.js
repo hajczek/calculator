@@ -140,10 +140,8 @@ class App extends Component {
       }
       // Display value with action sign when action sign is clicked after display result
       else if (document.querySelector('.clearAll')
-        && (value === '+'
-          || value === '-'
-          || value === '/'
-          || value === '*')) {
+        && actOperators.some(equal(value))
+      ) {
         allAction.classList.remove('clearAll');
         finishResult.classList.remove('clearAll');
 
