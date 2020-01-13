@@ -23,8 +23,11 @@ class App extends Component {
     let decimal = document.getElementById('decimal');
     let disabledNum = document.querySelector('[disabled="true"]');
 
+    // Table with sction operators
     const actOperators = ['+', '-', '*', '/'];
+    // Function checks if all elements are equal
     const equal = a => b => a === b;
+    // Function checks if all elements are not equal
     const notEqual = a => b => a !== b;
 
     // Check if clicked element is not a 'FORM'
